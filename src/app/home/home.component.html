@@ -3,20 +3,21 @@
       <input
         type="text"
         id="filter-text-box"
-        placeholder="Filter..."
+        placeholder="Search..."
         (input)="onFilterTextBoxChanged()"
       />
-      <button style="margin-left: 20px;" (click)="onPrintQuickFilterTexts()">
+      <!-- <button style="margin-left: 20px;" (click)="onPrintQuickFilterTexts()">
         Print Quick Filter Cache Texts
-      </button>
+      </button> -->
     </div>
     <ag-grid-angular
-      style="width: 100%; height: 100%;"
+      style="width: 500px; height: 500px"
       class="ag-theme-alpine"
       [columnDefs]="columnDefs"
       [defaultColDef]="defaultColDef"
       [rowData]="rowData"
       [cacheQuickFilter]="true"
       (gridReady)="onGridReady($event)"
+      [pagination]="true"
     ></ag-grid-angular>
   </div>

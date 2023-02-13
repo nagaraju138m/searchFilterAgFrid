@@ -23,26 +23,32 @@ export class HomeComponent implements OnInit {
   private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
-    // simple column, easy to understand
+
     { field: 'name' },
-    // the grid works with embedded fields
+    
     { headerName: 'Age', field: 'person.age' },
-    // or use value getter, all works with quick filter
+
     { headerName: 'Country', valueGetter: 'data.person.country' },
-    // or use the object value, so value passed around is an object
+
     {
       headerName: 'Results',
       field: 'medals',
       cellRenderer: MedalRenderer,
-      // this is needed to avoid toString=[object,object] result with objects
       getQuickFilterText: (params) => {
         return getMedalString(params.value);
       },
     },
   ];
   public defaultColDef: ColDef = {
-    flex: 1,
     editable: true,
+    enableRowGroup: true,
+    enablePivot: true,
+    enableValue: true,
+    sortable: true,
+    resizable: true,
+    filter: true,
+    flex: 1,
+    minWidth: 100,
   };
   public rowData: any[] | null = getData();
 
